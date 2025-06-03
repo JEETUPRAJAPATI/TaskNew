@@ -8,11 +8,11 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  root: "./src",
-  base: "./", // Ensures relative paths to avoid 404 on static servers
+  root: "./src",                      // Entry point is src/index.html
+  base: "./",                         // Use relative paths (important for Vercel/static hosting)
   build: {
-    outDir: "../dist/public", // Output to dist/public
-    emptyOutDir: true, // Clean the output directory before building
+    outDir: "../dist/public",        // Output goes to dist/public
+    emptyOutDir: true,               // Clean output before build
     rollupOptions: {
       output: {
         manualChunks: {
@@ -22,19 +22,19 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: [
-      "25b3cec7-b6b2-48b7-a8f4-7ee8a9c12574-00-36vzyej2u9kbm.kirk.replit.dev",
-      ".replit.dev",
-      "localhost",
-    ],
     host: "0.0.0.0",
     port: 5173,
+    allowedHosts: [
+      "localhost",
+      ".replit.dev",
+      "25b3cec7-b6b2-48b7-a8f4-7ee8a9c12574-00-36vzyej2u9kbm.kirk.replit.dev",
+    ],
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src/src"),
-      "@assets": path.resolve(__dirname, "./attached_assets"),
-      "@shared": path.resolve(__dirname, "./shared"),
+      "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "attached_assets"),
+      "@shared": path.resolve(__dirname, "shared"),
     },
   },
 });
