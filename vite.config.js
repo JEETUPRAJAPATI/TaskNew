@@ -8,18 +8,10 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  root: "./src",                      // Entry point is src/index.html
-  base: "./",                         // Use relative paths (important for Vercel/static hosting)
+  root: "./src", // so Vite treats ./src as project root, index.html should be inside src/
+  base: "./",    // relative base path (good for static hosting)
   build: {
-    outDir: "../dist/public",        // Output goes to dist/public
-    emptyOutDir: true,               // Clean output before build
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-        },
-      },
-    },
+    outDir: "../dist/public",
   },
   server: {
     host: "0.0.0.0",
