@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  root: "./client",
+  root: "./src",
   base: "./", // Ensures relative paths to avoid 404 on static servers
   build: {
     outDir: "../dist/public", // Output to dist/public
