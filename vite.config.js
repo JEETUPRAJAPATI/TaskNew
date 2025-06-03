@@ -8,21 +8,24 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  root: "./src",
+  root: "./client",
+  base: "./", // Ensures relative paths to avoid 404 on static servers
   build: {
+    outDir: "../dist/public", // Output to dist/public
+    emptyOutDir: true, // Clean the output directory before building
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom']
-        }
-      }
-    }
+          vendor: ["react", "react-dom"],
+        },
+      },
+    },
   },
   server: {
     allowedHosts: [
       "25b3cec7-b6b2-48b7-a8f4-7ee8a9c12574-00-36vzyej2u9kbm.kirk.replit.dev",
       ".replit.dev",
-      "localhost"
+      "localhost",
     ],
     host: "0.0.0.0",
     port: 5173,
